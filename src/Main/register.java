@@ -31,13 +31,13 @@ public class register extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        pass = new javax.swing.JTextField();
+        fName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        uName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,15 +57,15 @@ public class register extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 19, -1, 56));
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 260, 40));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 260, 40));
+        jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 260, 40));
+        jPanel3.add(fName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 260, 40));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel3.setText("Confirm Password");
+        jLabel3.setText("Password");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setText("Username");
+        jLabel4.setText("Fullname");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -90,10 +90,16 @@ public class register extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 260, 40));
+
+        uName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uNameActionPerformed(evt);
+            }
+        });
+        jPanel3.add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 260, 40));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel6.setText("Password");
+        jLabel6.setText("Userename");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, 500));
@@ -115,13 +121,14 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        login log = new login();
-        log.setVisible(true);
-        log.pack();
-        log.setLocationRelativeTo(null);
-        this.dispose();
-        System.out.println("clicking successfully!!");
+        config con = new config();
+        String sql = "INSERT INTO tbl_user (u_fname, u_username, u_password, type, status) VALUES (?, ?, ?, ?, ?)";
+        con.addRecord(sql, fName.getText(), uName.getText(), pass.getText(), "Admin", "Peding");
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void uNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +166,7 @@ public class register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fName;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -168,8 +176,7 @@ public class register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField pass;
+    private javax.swing.JTextField uName;
     // End of variables declaration//GEN-END:variables
 }
